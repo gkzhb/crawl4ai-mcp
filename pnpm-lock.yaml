@@ -11,6 +11,9 @@ importers:
       fastmcp:
         specifier: ^2.1.3
         version: 2.1.3
+      ky:
+        specifier: ^1.8.1
+        version: 1.8.1
       zod:
         specifier: ^3.25.30
         version: 3.25.30
@@ -20,7 +23,10 @@ importers:
         version: 4.13.2(@vue/compiler-sfc@3.5.15)(eslint@9.27.0)(typescript@5.8.3)
       '@modelcontextprotocol/inspector':
         specifier: ^0.13.0
-        version: 0.13.0(@types/node@22.15.23)(tailwindcss@4.1.8)(typescript@5.8.3)
+        version: 0.13.0(@types/node@22.15.24)(tailwindcss@4.1.8)(typescript@5.8.3)
+      '@types/node':
+        specifier: ^22.15.24
+        version: 22.15.24
       eslint:
         specifier: ^9.27.0
         version: 9.27.0
@@ -991,8 +997,8 @@ packages:
   '@types/ms@2.1.0':
     resolution: {integrity: sha512-GsCCIZDE/p3i96vtEqx+7dBUGXrc7zeSK3wwPHIaRThS+9OhWIXRqzs4d6k1SVU8g91DrNRWxWUGhp5KXQb2VA==}
 
-  '@types/node@22.15.23':
-    resolution: {integrity: sha512-7Ec1zaFPF4RJ0eXu1YT/xgiebqwqoJz8rYPDi/O2BcZ++Wpt0Kq9cl0eg6NN6bYbPnR67ZLo7St5Q3UK0SnARw==}
+  '@types/node@22.15.24':
+    resolution: {integrity: sha512-w9CZGm9RDjzTh/D+hFwlBJ3ziUaVw7oufKA3vOFSOZlzmW9AkZnfjPb+DLnrV6qtgL/LNmP0/2zBNCFHL3F0ng==}
 
   '@types/unist@3.0.3':
     resolution: {integrity: sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==}
@@ -2119,6 +2125,10 @@ packages:
 
   keyv@4.5.4:
     resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}
+
+  ky@1.8.1:
+    resolution: {integrity: sha512-7Bp3TpsE+L+TARSnnDpk3xg8Idi8RwSLdj6CMbNWoOARIrGrbuLGusV0dYwbZOm4bB3jHNxSw8Wk/ByDqJEnDw==}
+    engines: {node: '>=18'}
 
   levn@0.4.1:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
@@ -3595,7 +3605,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@modelcontextprotocol/inspector@0.13.0(@types/node@22.15.23)(tailwindcss@4.1.8)(typescript@5.8.3)':
+  '@modelcontextprotocol/inspector@0.13.0(@types/node@22.15.24)(tailwindcss@4.1.8)(typescript@5.8.3)':
     dependencies:
       '@modelcontextprotocol/inspector-cli': 0.13.0
       '@modelcontextprotocol/inspector-client': 0.13.0(tailwindcss@4.1.8)
@@ -3605,7 +3615,7 @@ snapshots:
       open: 10.1.2
       shell-quote: 1.8.2
       spawn-rx: 5.1.2
-      ts-node: 10.9.2(@types/node@22.15.23)(typescript@5.8.3)
+      ts-node: 10.9.2(@types/node@22.15.24)(typescript@5.8.3)
       zod: 3.25.30
     transitivePeerDependencies:
       - '@swc/core'
@@ -4067,7 +4077,7 @@ snapshots:
 
   '@types/ms@2.1.0': {}
 
-  '@types/node@22.15.23':
+  '@types/node@22.15.24':
     dependencies:
       undici-types: 6.21.0
 
@@ -5270,6 +5280,8 @@ snapshots:
     dependencies:
       json-buffer: 3.0.1
 
+  ky@1.8.1: {}
+
   levn@0.4.1:
     dependencies:
       prelude-ls: 1.2.1
@@ -6290,14 +6302,14 @@ snapshots:
 
   ts-interface-checker@0.1.13: {}
 
-  ts-node@10.9.2(@types/node@22.15.23)(typescript@5.8.3):
+  ts-node@10.9.2(@types/node@22.15.24)(typescript@5.8.3):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node10': 1.0.11
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 22.15.23
+      '@types/node': 22.15.24
       acorn: 8.14.1
       acorn-walk: 8.3.4
       arg: 4.1.3

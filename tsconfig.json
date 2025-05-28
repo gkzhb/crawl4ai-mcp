@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "rootDir": "./src",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "types": ["node"],
+    "declaration": true,
+    "outDir": "./dist"
+  },
+  "exclude": ["./tsup.config.ts"]
+}
