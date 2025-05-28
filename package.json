@@ -1,16 +1,16 @@
 {
-  "name": "fastmcp-template",
+  "name": "@gkzhb/crawl4ai-mcp",
   "version": "0.0.1",
-  "description": "MCP Server Template",
+  "description": "MCP Server for crawl4ai",
   "author": "gkzhb",
   "license": "MIT",
-  "homepage": "https://github.com/gkzhb/fastmcp-template",
+  "homepage": "https://github.com/gkzhb/crawl4ai-mcp",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gkzhb/fastmcp-template.git"
+    "url": "git+https://github.com/gkzhb/crawl4ai-mcp.git"
   },
   "bugs": {
-    "url": "https://github.com/gkzhb/fastmcp-template/issues"
+    "url": "https://github.com/gkzhb/crawl4ai-mcp/issues"
   },
   "keywords": [
     "model-context-protocol",
