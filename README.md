@@ -1,20 +1,25 @@
-# TypeScript MCP Server Template
+# Crawl4AI Model Context Protocol Server
 
-A modern TypeScript MCP server template featuring:
+This MCP Server helps you connect to your Crawl4AI docker API server before Crawl4AI 0.6.0.
 
-- ⚡️ [fastmcp](https://github.com/punkpeye/fastmcp) - Fast MCP server framework
-- 🛡️ [zod](https://github.com/colinhacks/zod) - Type-safe schema validation
-- 📦 [tsup](https://github.com/egoist/tsup) - Zero-config TypeScript bundler
-- ✨ [@antfu/eslint-config](https://github.com/antfu/eslint-config) - Opinionated ESLint config
+Built with [gkzhb/fastmcp-template: TypeScript MCP Server Template](https://github.com/gkzhb/fastmcp-template).
 
 ## Quick Start
 
 Prerequisites:
 - Node.js 18+
-- pnpm 8+
 
-1. Install dependencies: `pnpm install`
-2. Develop with live reload: `pnpm run dev` (uses tsup watch mode)
-3. Debug MCP server: `pnpm run inspect` (test MCP server with [MCP Inspector](https://github.com/modelcontextprotocol/inspector))
-3. Build for production: `pnpm run build` (tsup production bundle)
-4. Lint your code: `pnpm run lint` (ESLint with @antfu/eslint-config)
+To start Crawl4AI MCP server:
+
+```bash
+export CRAWL4AI_URL=http://your-server-ip:port
+npx -y @gkzhb/crawl4ai-mcp
+```
+
+Shell environment variables:
+
+| Variable | If Optional | Description |
+|:-:|:-:|---|
+| `CRAWL4AI_URL` | **Required** | Crawl4AI docker API server URL, eg. `http://localhost:11545` |
+| `CRAWL4AI_API_TOKEN` | Optional | If Crawl4AI server enables authentication, you need to use this |
+| `SERVER_PORT` | Optional | MCP server port, default value is `8585` |
