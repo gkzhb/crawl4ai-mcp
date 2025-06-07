@@ -1,12 +1,13 @@
-import * as process from 'node:process'
 import { FastMCP } from 'fastmcp'
 import { z } from 'zod'
+import { version } from '../package.json'
+import { CRAWL4AI_API_TOKEN, CRAWL4AI_URL } from './env'
 import { createRequest } from './request'
 
-const request = createRequest({ baseUrl: process.env.CRAWL4AI_URL || '', authorization: process.env.CRAWL4AI_API_TOKEN })
+const request = createRequest({ baseUrl: CRAWL4AI_URL, authorization: CRAWL4AI_API_TOKEN })
 const server = new FastMCP({
-  name: 'My Server',
-  version: '0.0.1',
+  name: 'Crawl4AI MCP Server',
+  version: version as `${number}.${number}.${number}`,
 })
 
 server.addTool({
@@ -20,10 +21,15 @@ server.addTool({
       return 'No url provided'
     }
     try {
-      const result = await request.post('crawl', { json: { urls: [args.url], crawler_config: {
-        type: 'CrawlerRunConfig',
-        params: { css_selector: undefined, excluded_tags: undefined, stream: false, cache_mode: 'BYPASS' },
-      } } })
+      const result = await request.post('crawl', {
+        json: {
+          urls: [args.url],
+          crawler_config: {
+            type: 'CrawlerRunConfig',
+            params: { css_selector: undefined, excluded_tags: undefined, stream: false, cache_mode: 'BYPASS' },
+          },
+        },
+      })
       const resp: { task_id: string } = await result.json()
       log.info('fetch_web crawl result', resp)
       while (true) {
