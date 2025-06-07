@@ -1,6 +1,6 @@
 {
   "name": "@gkzhb/crawl4ai-mcp",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "MCP Server for crawl4ai",
   "author": "gkzhb",
   "license": "MIT",
@@ -17,7 +17,9 @@
     "mcp"
   ],
   "main": "dist/crawl4ai-mcp.js",
-  "bin": "./dist/crawl4ai-mcp.js",
+  "bin": {
+    "crawl4ai-mcp": "dist/index.js"
+  },
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",

@@ -2,7 +2,7 @@ import type { Options } from 'tsup'
 import { defineConfig } from 'tsup'
 
 const commonOptions: Options = {
-  entry: { 'crawl4ai-mcp': 'src/index.ts' },
+  entry: ['src/index.ts'],
 }
 export default defineConfig((options) => {
   const buildOptions: Options = {
@@ -14,7 +14,7 @@ export default defineConfig((options) => {
   const devOptions: Options = {
     ...commonOptions,
     name: 'Develop',
-    onSuccess: 'node dist/crawl4ai-mcp.js',
+    onSuccess: 'node dist/index.js',
   }
   return options.watch ? devOptions : buildOptions
 })
