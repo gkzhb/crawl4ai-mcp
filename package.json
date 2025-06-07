@@ -1,6 +1,6 @@
 {
   "name": "@gkzhb/crawl4ai-mcp",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "MCP Server for crawl4ai",
   "author": "gkzhb",
   "license": "MIT",
@@ -16,13 +16,11 @@
     "model-context-protocol",
     "mcp"
   ],
-  "main": "dist/index.js",
-  "bin": {
-    "your-cli-name": "dist/index.js"
-  },
+  "main": "dist/crawl4ai-mcp.js",
+  "bin": "./dist/crawl4ai-mcp.js",
   "scripts": {
-    "build": "tsup src/index.ts",
-    "dev": "tsup src/index.ts --watch",
+    "build": "tsup",
+    "dev": "tsup --watch",
     "inspect": "fastmcp inspect src/index.ts",
     "lint": "eslint",
     "lint:fix": "eslint --fix"
