@@ -1,13 +1,13 @@
+#!/usr/bin/env node
 import { FastMCP } from 'fastmcp'
 import { z } from 'zod'
-import { version } from '../package.json'
 import { CRAWL4AI_API_TOKEN, CRAWL4AI_URL, SERVER_PORT } from './env'
 import { createRequest } from './request'
 
 const request = createRequest({ baseUrl: CRAWL4AI_URL, authorization: CRAWL4AI_API_TOKEN })
 const server = new FastMCP({
   name: 'Crawl4AI MCP Server',
-  version: version as `${number}.${number}.${number}`,
+  version: '0.0.4', // version as `${number}.${number}.${number}`,
 })
 
 server.addTool({
