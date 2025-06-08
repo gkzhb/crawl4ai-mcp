@@ -20,40 +20,59 @@ server.addTool({
     if (!args.url) {
       return 'No url provided'
     }
+
+    // Process parameters
+    const excludedTags = ['script', 'style', 'noscript']
+    // const excludedTags = args.excluded_tags
+    //   ? args.excluded_tags.split(',').map(tag => tag.trim()).filter(tag => tag)
+    //   : ['script', 'style', 'noscript']
+
     try {
-      const result = await request.post('crawl', {
+      const response = await request.post('crawl', {
         json: {
           urls: [args.url],
           crawler_config: {
             type: 'CrawlerRunConfig',
-            params: { css_selector: undefined, excluded_tags: undefined, stream: false, cache_mode: 'BYPASS' },
+            params: {
+              // css_selector: args.css_selector,
+              excluded_tags: excludedTags,
+              stream: false,
+              cache_mode: 'BYPASS',
+            },
           },
         },
       })
-      const resp: { task_id: string } = await result.json()
-      log.info('fetch_web crawl result', resp)
-      while (true) {
-        const task = await request.get(`task/${resp.task_id}`)
-        const taskResp: Record<string, any> = await task.json()
-        log.info('fetch_web task result', taskResp)
-        if (taskResp.status === 'completed') {
-          return taskResp.results[0]?.markdown_v2?.raw_markdown || 'Empty content'
-        }
-        await new Promise<true>((resolve) => {
-          setTimeout(() => {
-            resolve(true)
-          }, 2000)
-        })
+
+      const result: any = await response.json()
+      log.info('fetch_web result', result)
+
+      const firstResult = result.results[0]
+      if (!firstResult) {
+        return 'Error: No results returned'
       }
+
+      return firstResult.markdown?.raw_markdown || ''
+      // switch (args.output_format || 'markdown') {
+      //   case 'html':
+      //     return firstResult.html || ''
+      //   case 'cleaned_html':
+      //     return firstResult.cleaned_html || ''
+      //   default:
+      //     return firstResult.markdown_v2?.raw_markdown || ''
+      // }
     }
     catch (error) {
       log.error('fetch_web error', { error })
       if (error.name === 'HTTPError') {
-        const errorJson = await error.response.json()
-        log.error('fetch_web http error', { errorJson })
-        return errorJson
+        try {
+          const errorJson = await error.response.json()
+          return `Crawl4AI service error: ${JSON.stringify(errorJson)}`
+        }
+        catch {
+          return `HTTP error: ${error.message}`
+        }
       }
-      return error?.message ?? 'unknown error'
+      return `Error: ${error?.message ?? 'Unknown error'}`
     }
   },
 })

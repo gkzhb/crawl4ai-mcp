@@ -5,7 +5,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/gkzhb/crawl4ai-mcp)](https://github.com/gkzhb/crawl4ai-mcp/issues)
 [![GitHub license](https://img.shields.io/github/license/gkzhb/crawl4ai-mcp)](https://github.com/gkzhb/crawl4ai-mcp/blob/main/LICENSE)
 
-This MCP Server helps you connect to your Crawl4AI docker API server before Crawl4AI 0.6.0.
+This MCP Server helps you connect to your Crawl4AI docker API server.
 
 Built with [gkzhb/fastmcp-template: TypeScript MCP Server Template](https://github.com/gkzhb/fastmcp-template).
 
@@ -21,7 +21,17 @@ export CRAWL4AI_URL=http://your-server-ip:port
 npx -y @gkzhb/crawl4ai-mcp
 ```
 
-Shell environment variables:
+Notice that the command above is for Crawl4AI server v0.6.x.
+
+For Crawl4AI server before v0.6.0, please use 0.0.x:
+
+```bash
+npx -y @gkzhb/crawl4ai-mcp@0.0.8
+```
+
+This MCP server uses Streamable HTTP. And the default HTTP URL is `http://localhost:8585/stream`.
+
+To customize MCP server, here are the shell environment variables:
 
 | Variable | If Optional | Description |
 |:-:|:-:|---|
