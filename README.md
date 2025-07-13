@@ -12,6 +12,7 @@ Built with [gkzhb/fastmcp-template: TypeScript MCP Server Template](https://gith
 ## Quick Start
 
 Prerequisites:
+
 - Node.js 18+
 
 To start Crawl4AI MCP server:
@@ -29,12 +30,13 @@ For Crawl4AI server before v0.6.0, please use 0.0.x:
 npx -y @gkzhb/crawl4ai-mcp@0.0.8
 ```
 
-This MCP server uses Streamable HTTP. And the default HTTP URL is `http://localhost:8585/stream`.
+This MCP server uses Streamable HTTP. And the default Streamable HTTP URL is `http://localhost:8585/mcp`.
+SSE is also supported and the SSE HTTP URL is `http://localhost:8585/sse`.
 
 To customize MCP server, here are the shell environment variables:
 
-| Variable | If Optional | Description |
-|:-:|:-:|---|
-| `CRAWL4AI_URL` | **Required** | Crawl4AI docker API server URL, eg. `http://localhost:11545` |
-| `CRAWL4AI_API_TOKEN` | Optional | If Crawl4AI server enables authentication, you need to use this |
-| `SERVER_PORT` | Optional | MCP server port, default value is `8585` |
+|       Variable       | If Optional  | Description                                                     |
+| :------------------: | :----------: | --------------------------------------------------------------- |
+|    `CRAWL4AI_URL`    | **Required** | Crawl4AI docker API server URL, eg. `http://localhost:11545`    |
+| `CRAWL4AI_API_TOKEN` |   Optional   | If Crawl4AI server enables authentication, you need to use this |
+|    `SERVER_PORT`     |   Optional   | MCP server port, default value is `8585`                        |
