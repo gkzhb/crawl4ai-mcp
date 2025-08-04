@@ -40,3 +40,11 @@ To customize MCP server, here are the shell environment variables:
 |    `CRAWL4AI_URL`    | **Required** | Crawl4AI docker API server URL, eg. `http://localhost:11545`    |
 | `CRAWL4AI_API_TOKEN` |   Optional   | If Crawl4AI server enables authentication, you need to use this |
 |    `SERVER_PORT`     |   Optional   | MCP server port, default value is `8585`                        |
+
+This MCP also supports Browserless to crawl web page since v0.2.1
+
+See [env.ts](./src/env.ts) for Browserless environment variables:
+- `BROWSERLESS_URL`
+- `BROWSERLESS_TOKEN`
+- `BROWSERLESS_BLOCK_ADS`
+- `BROWSERLESS_STEALTH_MODE`

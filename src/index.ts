@@ -17,7 +17,7 @@ crawlerFactory.register('browserless', BrowserlessCrawler)
 const crawlerType = z.enum([ECrawlImpl.Browserless, ECrawlImpl.Crawl4AI])
 const server = new FastMCP({
   name: 'Crawl4AI MCP Server',
-  version: '0.0.5', // version as `${number}.${number}.${number}`,
+  version: '0.2.1', // version as `${number}.${number}.${number}`,
 })
 
 server.addTool({
