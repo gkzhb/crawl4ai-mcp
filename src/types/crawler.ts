@@ -1,3 +1,5 @@
+import type { SerializableValue } from 'fastmcp'
+
 /**
  * 爬虫结果接口
  */
@@ -44,6 +46,8 @@ export interface ICrawlerConfig {
  * 爬虫接口
  */
 export interface ICrawler {
+  /** 日志 */
+  log: ICrawlerLogger
   /** 爬虫类型标识 */
   readonly type: string
 
@@ -65,7 +69,10 @@ export interface ICrawler {
    * @param options 过滤选项
    * @returns 爬取结果，失败时返回undefined
    */
-  crawl: (url: string, options?: IFilterOptions) => Promise<ICrawlResult | undefined>
+  crawl: (
+    url: string,
+    options?: IFilterOptions
+  ) => Promise<ICrawlResult | undefined>
 
   /**
    * 获取爬虫配置
@@ -75,33 +82,11 @@ export interface ICrawler {
 }
 
 /**
- * 爬虫工厂接口
+ * 日志接口
  */
-export interface ICrawlerFactory {
-  /**
-   * 创建爬虫实例
-   * @param type 爬虫类型
-   * @returns 爬虫实例
-   */
-  create: (type: string) => ICrawler
-
-  /**
-   * 注册爬虫类型
-   * @param type 爬虫类型
-   * @param crawlerClass 爬虫类
-   */
-  register: (type: string, crawlerClass: new () => ICrawler) => void
-
-  /**
-   * 获取可用的爬虫类型列表
-   * @returns 爬虫类型列表
-   */
-  getAvailableTypes: () => string[]
-
-  /**
-   * 检查爬虫类型是否已注册
-   * @param type 爬虫类型
-   * @returns 是否已注册
-   */
-  isRegistered: (type: string) => boolean
+export interface ICrawlerLogger {
+  info: (message: string, meta?: SerializableValue) => void
+  error: (message: string, meta?: SerializableValue) => void
+  warn: (message: string, meta?: SerializableValue) => void
+  debug: (message: string, meta?: SerializableValue) => void
 }

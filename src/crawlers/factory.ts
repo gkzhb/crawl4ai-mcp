@@ -1,12 +1,14 @@
-import type { ICrawler, ICrawlerFactory } from '../types/crawler'
+import type { ICrawler } from '../types/crawler'
+import type { BaseCrawler, BaseCrawlerOptions } from './implementations/base'
 import { CrawlerError, CrawlerErrorType } from '../errors/crawler'
 
+type CrawlerClass = new (options: BaseCrawlerOptions) => BaseCrawler
 /**
  * 爬虫工厂实现
  */
-export class CrawlerFactory implements ICrawlerFactory {
+export class CrawlerFactory {
   /** 已注册的爬虫映射 */
-  private readonly crawlers: Map<string, new () => ICrawler> = new Map()
+  private readonly crawlers: Map<string, CrawlerClass> = new Map()
 
   /**
    * 创建爬虫实例
@@ -14,7 +16,7 @@ export class CrawlerFactory implements ICrawlerFactory {
    * @returns 爬虫实例
    * @throws CrawlerError 当爬虫类型未注册时
    */
-  create(type: string): ICrawler {
+  create(type: string, options: BaseCrawlerOptions): ICrawler {
     const CrawlerClass = this.crawlers.get(type)
 
     if (!CrawlerClass) {
@@ -26,7 +28,7 @@ export class CrawlerFactory implements ICrawlerFactory {
       )
     }
 
-    return new CrawlerClass()
+    return new CrawlerClass(options)
   }
 
   /**
@@ -34,7 +36,10 @@ export class CrawlerFactory implements ICrawlerFactory {
    * @param type 爬虫类型
    * @param crawlerClass 爬虫类
    */
-  register(type: string, crawlerClass: new () => ICrawler): void {
+  register(
+    type: string,
+    crawlerClass: CrawlerClass,
+  ): void {
     this.crawlers.set(type, crawlerClass)
   }
 
